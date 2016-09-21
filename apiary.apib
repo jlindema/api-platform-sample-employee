@@ -1,0 +1,99 @@
+FORMAT: 1A
+HOST: http://employee.oracle.com/
+
+# Employee API
+
+Allows clients to query for employee information. Clients can decide if they want 
+to receive all the details for the particular employee or just the summary. 
+
+## Employees [/employees]
+
+### Get All Employees [GET]
+Returns all employees available
+
++ Response 200 (application/json)
+
+        [
+            {
+                "employee_number": "1234",
+                "first_name": "Robert",
+                "last_name": "Smith",
+                "email": "bob.smith@email.com",
+                "phone": "305-235-1199",
+                "job_tittle":"Senior Programmer"
+                
+            },
+            {
+                "employee_number": "5678",
+                "first_name": "Monica",
+                "last_name": "Williams",
+                "email": "monica.williams@email.com",
+                "phone": "404-235-0987"
+                "job_tittle":"Senior Manager"
+            },
+            {
+                "employee_number": "4321",
+                "first_name": "James",
+                "last_name": "Jones",
+                "email": "james.jones@email.com",
+                "phone": "212-235-2345"
+                "job_tittle":"Creative Director"
+            }
+        ]
+
+## Employee Details [/employee/details/{employee_number}]
+
+### Get Employee details [GET]
+Returns all details for a specific employee
+
++ Parameters
+    + employee_number (number) - Employee Number.
+
++ Response 200 (application/json)
+
+        [
+            {
+                "employee_number": "1234",
+                "first_name": "Robert",
+                "last_name": "Smith",
+                "email": "bob.smith@email.com",
+                "phone": "305-235-1199",
+                "job_tittle":"Senior Programmer",
+                "organization": "IT"
+                "salary": "$90,500",
+                "date_of_birth":"1972-04-27",
+                "ssn":"12345678",
+                "manager":"Monica Williams",
+                "effective_start_date":"2014-08-30",
+                "effective_end_date": null,
+                "default_address": {
+                    "address1": "Chestnut Street 92",
+                    "address2": "",
+                    "city": "Miami",
+                    "State": "Florida",
+                    "country": "United States",
+                    "zip": "33126"
+            }
+        ]
+
+
+## Employee Summary [/employee/summary/{employee_number}]
+
+### Get Employee Summary [GET]
+Returns only a summary of the employee (id, name, email and phone number).
+
++ Parameters
+    + employee_number (number) - Employee Number.
+
++ Response 200 (application/json)
+
+        [
+            {
+                "employee_number": "1234",
+                "first_name": "Robert",
+                "last_name": "Smith",
+                "email": "bob.smith@email.com",
+                "phone": "305-235-1199",
+                "job_tittle":"Senior Programmer"
+            }
+        ]
